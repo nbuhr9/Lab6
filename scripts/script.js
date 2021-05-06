@@ -1,6 +1,6 @@
 // script.js
 
-window.logCheckpoints = true // set to true/false to add/remove checkpoint logs to clear room for your own debugging
+window.logCheckpoints = true; // set to true/false to add/remove checkpoint logs to clear room for your own debugging
 
 
 // script.js
@@ -10,34 +10,28 @@ document.addEventListener('DOMContentLoaded', () => {
    * 1. fetch json results from https://cse110lab6.herokuapp.com/entries
    * 2. for each entry, create and append a custom HTML element 
    *    using a web component called JournalEntry to a 
-   *    list of journal entries in inside <main></main>. 
+   *    list of journal entries inside <main></main>. 
    *    
    * Hint: don't forget to set the entry property inside JournalEntry to 
    * the current entry for each journal-entry element.
    */
 
-  let url = ""  // SET URL 
+  // set URL
+  let url = "https://cse110lab6.herokuapp.com/entries"; 
 
   fetch(url)
-    .then( /* FILL IN RESPONSE HANDLING HERE */ )
+    .then(response => response.json())
     .then(entries => {
       entries.forEach((entry) => {
-       
         let newPost;  
 
+        // create entry element and set entry property
+        newPost = document.createElement('journal-entry');
+        newPost.entry = entry;
 
-        // CODE GOES HERE vvv
-        
-
-
-
-
-
-
-
-        // CODE GOES HERE ^^^
-
-
+        // append element
+        let main = document.getElementsByTagName('main')[0];
+        main.appendChild(newPost);
 
         /* ------------- do not edit this code, it is for your debugging purposes ------------- */
         try {

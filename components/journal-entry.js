@@ -72,7 +72,13 @@ class JournalEntry extends HTMLElement {
      * TODO: set the entry title, date, and content fields in this component
      */
     
-    // CODE GOES HERE
+    // get the shadow root for the entry
+    let article = this.shadowRoot.querySelector('article');
+
+    // set title, date, and content
+    article.querySelector('h2').append(entry.title);
+    article.querySelectorAll('p')[0].append(entry.date);
+    article.querySelectorAll('p')[1].append(entry.content);
 
     if (entry.image) {
       let entryImage;
@@ -83,13 +89,16 @@ class JournalEntry extends HTMLElement {
        * 3. append the image element to the appropriate location in this component
        */
 
-      // CODE GOES HERE vvv
+      // create an image element
+      entryImage = document.createElement('img');
+      entryImage.setAttribute('class', 'entry-image');
 
+      // set the src and alt attributes
+      entryImage.setAttribute('src', entry.image.src);
+      entryImage.setAttribute('alt', entry.image.alt);
 
-
-
-
-      // CODE GOES HERE ^^^
+      // append the image
+      article.append(entryImage);
 
       /* ------------- do not edit this code, it is for your debugging purposes ------------- */
       try {
@@ -109,16 +118,15 @@ class JournalEntry extends HTMLElement {
        * 3. append the audio element to the appropriate location in this component
        */
 
-      // CODE GOES HERE vvv
+      // create an audio element
+      entryAudio = document.createElement('audio');
 
+      // set the audio src and enable controls
+      entryAudio.setAttribute('src', entry.audio);
+      entryAudio.controls = true;
 
-
-
-
-
-      // CODE GOES HERE ^^^
-      
-
+      // append the audio
+      article.append(entryAudio);
       
       /* ------------- do not edit this code, it is for your debugging purposes ------------- */
       try {
